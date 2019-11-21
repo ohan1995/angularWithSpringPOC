@@ -1,0 +1,73 @@
+<!--Form Starting-->
+<br><div style="margin-left:300px;">
+<div class="card" style="width: 25rem;">
+<form class="text-center border border-light p-5" (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+
+    <h3 class="card-header">Register</h3><br>
+    
+    <!--Username-->
+        <input type="text" id="userName"
+     class="form-control mb-4" placeholder="Username"
+     formControlName='username'
+    [ngClass]="{'is-invalid' : submit && field.username.errors}">
+    <div *ngIf="submit && field.username.errors" class="invalid-feedback">
+        <div *ngIf="field.username.errors.required">Username is required</div>
+    </div>
+
+    <!--Email-->
+        <input type="text" id="email"
+     class="form-control mb-4" placeholder="Email"
+     formControlName='email'
+     [ngClass]="{'is-invalid': submit && field.email.errors}">
+    <div *ngIf="submit && field.email.errors" class="invalid-feedback">
+        <div *ngIf="field.email.errors.required">email is required</div>
+        <div *ngIf="field.email.errors.email">Email must be valid email address</div>
+    </div>
+
+    <!--Password-->
+      <input type="password" class="form-control mb-4" 
+      id="password" name="password" placeholder="Password"
+      formControlName="password"
+      [ngClass]="{'is-invalid': submit && field.password.errors}">
+      <div *ngIf="submit && field.password.errors" class="invalid-feedback">
+            <div *ngIf="field.password.errors.required">Password is required</div>
+            <div *ngIf="field.password.errors.minlength">Password must be at least 6 characters</div>
+        </div> 
+
+    <!--Confirm Password-->
+        <input type="password" class="form-control mb-4"
+        placeholder="Confirm Password" id="confirm" formControlName="confirm"
+        [ngClass]="{'is-invalid': submit && field.confirm.errors}">
+        <div *ngIf="submit && field.confirm.errors" class="invalid-feedback">
+            <div *ngIf="field.confirm.errors.required">Confirm Password is required</div>
+        </div>  
+
+        <!--Address checkbox-->
+         <label class="form-check-label">
+        <input type="checkbox" class="form-check-input"
+        id="address" name="address" formControlName="address" [(ngModel)]="showhide">Add Address</label>
+
+        <!--city-->
+         <div *ngIf="showhide">
+          <input type="text" class="form-control mb-4" placeholder="City" id="city" formControlName="city">
+         </div>
+
+         <!--country-->
+         <div *ngIf="showhide">
+          <input type="text" class="form-control mb-4" placeholder="Country" id="country" formControlName="country">
+         </div>
+
+         <!--submit BUTTON-->
+        <div class="text-center">
+            <button class="btn btn-primary mr-1">Register</button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+        </div>
+</form>
+</div>
+</div>
+
+<br>Dirty:{{registerForm.dirty}}
+<br>Touched:{{registerForm.touched}}
+<br>Valid:{{registerForm.valid}}
+<br>Pristine:{{registerForm.pristine}}
+<br>Values:{{registerForm.value |json}}

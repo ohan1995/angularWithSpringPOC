@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "D:/Angular Training/myApp/node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "D:/Angular Training/myApp/node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "D:/Angular Training/myApp/node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -1,0 +1,45 @@
+<br><div style="margin-left:300px;">
+<div class="card" style="width: 25rem;">
+<form class="text-center border border-light p-5" 
+(ngSubmit)="save(loginForm)"
+novalidate
+#loginForm="ngForm">
+    <h3 class="card-header">Login</h3><br>
+
+    <!--<username>-->
+    <input type="text" id="username"
+        class="form-control mb-4" placeholder="Username"
+        required name="username"
+        [(ngModel)]="login.username"
+        #userNameVar="ngModel"
+        [ngClass]="{'is-invalid':(userNameVar.touched || userNameVar.dirty) && !userNameVar.valid }">
+        <span class="invalid-feedback">
+          <span *ngIf="userNameVar.errors?.required">
+            Please Enter UserName
+          </span>
+        </span>
+
+        <!--<Password>-->
+    <input type="text" id="password"
+        class="form-control mb-4" placeholder="Password"
+        required name="password"
+        [(ngModel)]="login.password"
+        #passwordVar="ngModel"
+        [ngClass]="{'is-invalid':(passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }">
+        <span class="invalid-feedback">
+          <span *ngIf="passwordVar.errors?.required">
+            Please Enter Password
+          </span>
+        </span>
+
+        <!--<loginButton>-->
+        <button class="btn btn-primary mr-3"
+        type="submit"
+         style="width:80px"
+               [title]="loginForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+              [disabled]="!loginForm.valid">
+                    Login
+            </button> 
+            <a [routerLink]="['/register']">New user?</a>
+</form>
+</div>
